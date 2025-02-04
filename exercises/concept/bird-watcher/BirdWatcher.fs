@@ -1,19 +1,20 @@
 module BirdWatcher
 
-let lastWeek: int[] =
-   failwith "Please implement the 'lastWeek' value"
+let lastWeek: int [] = [| 0; 2; 5; 3; 7; 8; 4 |]
 
-let yesterday(counts: int[]): int =
-  failwith "Please implement the 'yesterday' function"
+let yesterday (counts: int []) : int = counts[counts.Length - 2]
 
-let total(counts: int[]): int =
-  failwith "Please implement the 'total' function"
+let total (counts: int []) : int = Array.sum (counts)
 
-let dayWithoutBirds(counts: int[]): bool =
-  failwith "Please implement the 'dayWithoutBirds' function"
+let dayWithoutBirds (counts: int []) : bool = Array.contains 0 counts
 
-let incrementTodaysCount(counts: int[]): int[] =
- failwith "Please implement the 'incrementTodaysCount' function"
+let incrementTodaysCount (counts: int []) : int [] =
+    counts[counts.Length - 1] <- counts[counts.Length - 1] + 1
+    counts
 
-let unusualWeek(counts: int[]): bool =
-  failwith "Please implement the 'unusualWeek' function"
+let unusualWeek (counts: int []) : bool =
+    match counts with
+    | [| _; 0; _; 0; _; 0; _ |] -> true
+    | [| _; 10; _; 10; _; 10; _ |] -> true
+    | [| 5; _; 5; _; 5; _; 5 |] -> true
+    | _ -> false
